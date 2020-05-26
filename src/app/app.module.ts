@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatCardModule } from '@angular/material/card'
+import { MatFormFieldModule } from '@angular/material/form-field'
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import {OverlayContainer} from '@angular/cdk/overlay';
@@ -19,7 +21,8 @@ import {OverlayContainer} from '@angular/cdk/overlay';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
