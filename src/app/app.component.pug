@@ -4,10 +4,10 @@ mat-toolbar(min="1" max="100" step="1" value="1")
 mat-card(min="1" max="100" step="1" value="1")
   |このアプリはバイク情報をスクレイピングし、表示させているものです。
 
-mat-form-field
-  input(type="text" matInput [formControl]="myControl" [matAutocomplete]="auto")
+//- mat-form-field
+//-   input(type="text" matInput [formControl]="myControl" [matAutocomplete]="auto")
 
-mat-autocomplete(#auto="matAutocomplete")
-  mat-option(*ngFor="let option of options" [value]="option")
-    |{{option}}
+//- mat-autocomplete(#auto="matAutocomplete")
+//-   mat-option(*ngFor="let option of options" [value]="option")
+//-     |{{option}}
 </div>
