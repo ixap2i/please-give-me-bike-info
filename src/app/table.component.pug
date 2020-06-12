@@ -1,0 +1,27 @@
+<div>
+table(mat-table [datasource]='dataSource')
+  // Position Column
+  ng-container(matcolumndef='position')
+    th(mat-header-cell *matHeaderCellDef)  No.
+    td(mat-cell *matcelldef='let element')
+      | {{element.position}}
+  // Name Column
+  ng-container(matcolumndef='name')
+    th(mat-header-cell *matHeaderCellDef)  Name
+    td(mat-cell *matcelldef='let element')
+      | {{element.name}}
+  // Weight Column
+  ng-container(matcolumndef='weight')
+    th(mat-header-cell *matHeaderCellDef)  Weight
+    td(mat-cell *matcelldef='let element')
+      | {{element.weight}}
+  // Symbol Column
+  ng-container(matcolumndef='symbol')
+    th(mat-header-cell *matHeaderCellDef)  Symbol
+    td(mat-cell *matcelldef='let element')
+      | {{element.symbol}}
+  tr(mat-header-row *matheaderrowdef='displayedColumns')
+  tr(mat-row *matrowdef='let row; columns: displayedColumns;')
+mat-paginator([pagesizeoptions]='[5, 10, 20]' showfirstlastbuttons='')
+
+</div>
