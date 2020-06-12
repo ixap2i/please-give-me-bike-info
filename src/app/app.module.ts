@@ -7,13 +7,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatCardModule } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field'
-
+import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon'
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { MatSelectModule } from '@angular/material/select';
+import { Observable } from 'rxjs'
+import { map, startWith } from 'rxjs/operators'
 import {OverlayContainer} from '@angular/cdk/overlay';
+import { FormControl } from '@angular/forms';
+
+import { BikeComponent } from './table.component'
+
+import { HammerModule } from '@angular/platform-browser'
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BikeComponent
   ],
   imports: [
     BrowserModule,
@@ -22,15 +31,36 @@ import {OverlayContainer} from '@angular/cdk/overlay';
     MatToolbarModule,
     MatCardModule,
     MatAutocompleteModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    HammerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, BikeComponent]
 })
 export class AppModule { }
 
 export class UnicornCandyAppModule {
+  filteredOptions: Observable<string[]>;
+  formControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+
   constructor(overlayContainer: OverlayContainer) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
+  }
+
+  ngOnInit() {
+    this.filteredOptions = this.formControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 }
