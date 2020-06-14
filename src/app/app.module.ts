@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BikeModule } from './bike.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,14 +17,11 @@ import { map, startWith } from 'rxjs/operators'
 import {OverlayContainer} from '@angular/cdk/overlay';
 import { FormControl } from '@angular/forms';
 
-import { BikeComponent } from './table.component'
+import { BikeComponent } from './bike.component'
 
+// ますとらしい
 import { HammerModule } from '@angular/platform-browser'
 @NgModule({
-  declarations: [
-    AppComponent,
-    BikeComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,12 +35,13 @@ import { HammerModule } from '@angular/platform-browser'
     MatSelectModule,
     HammerModule
   ],
+  declarations: [
+    AppComponent
+  ],
   providers: [],
-  bootstrap: [AppComponent, BikeComponent]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
-
-export class UnicornCandyAppModule {
+export class AppModule {
   filteredOptions: Observable<string[]>;
   formControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
