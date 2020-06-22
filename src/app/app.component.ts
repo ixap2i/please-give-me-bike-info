@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.pug',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'please-give-me-bike-info';
 }

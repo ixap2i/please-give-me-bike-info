@@ -2,21 +2,18 @@
 mat-toolbar(min="1" max="100" step="1" value="1")
   |please-give-me-bike-info
 
-  mat-form-field(appearance="legacy")
+form
+  mat-form-field
     mat-label
       | Let's enter bike name.
     mat-icon(matSuffix)
       |search
     input(type="text"
-           placeholder="Pick one"
-           aria-label="Number"
-           matInput
-           [formControl]="formControl"
-           [matAutocomplete]="auto")
-    //- mat-autocomplete(autoActiveFirstOption #auto="matAutocomplete")
-    //- mat-option(*ngFor="let option of filteredOptions | async" [value]="option")
+          placeholder="Pick one"
+          aria-label="Number"
+          matInput)
 img(src="assets/bike.png" style="width: 1300px; height: 800px:")
 mat-card(min="1" max="100" step="1" value="1")
   |このアプリはバイク情報をスクレイピングし、表示させているものです。
-
+app-bike
 </div>
