@@ -26,3 +26,8 @@ app.use(express.json())
 app.get('/', (req, res) => {
     res.send({hello: 'world'});
 });
+app.get('/bikes', (req, res) => {
+    res.send(
+        { name: 'GSX250R', maker: 'SUZUKI', weight: 134, class: 250}
+    );
+})
