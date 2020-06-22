@@ -1,6 +1,13 @@
-import * as express from 'express';
 const express = require('express')
 const app = express();
+
+// start our server on port 4201
+app.listen(4201, function() {
+    console.log("Server now listening on 4201");
+});
+// app.listen(4201, '127.0.0.1', function() {
+//     console.log("Server now listening on 4201");
+// });
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -18,8 +25,4 @@ app.use(express.json())
 // A default hello word route
 app.get('/', (req, res) => {
     res.send({hello: 'world'});
-});
-// start our server on port 4201
-app.listen(4201, '127.0.0.1', function() {
-    console.log("Server now listening on 4201");
 });
