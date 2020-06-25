@@ -8,6 +8,6 @@ export class BikeDataService {
   name: string;
   maker: string;
   weight: number;
-  class: number;
+  bclass: number;
   datas: string[];
 }

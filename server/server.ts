@@ -24,5 +24,5 @@ app.get('/', (req, res) => {
     res.send({hello: 'world'});
 });
 app.get('/bikes', (req, res) => {
-    res.json({ name: 'GSX250R', maker: 'SUZUKI', weight: 134, class: 250});
+    res.json({ name: 'GSX250R', maker: 'SUZUKI', weight: 134, bclass: 250});
 })
