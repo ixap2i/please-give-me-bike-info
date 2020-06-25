@@ -1,7 +1,9 @@
 import { ViewChild, OnInit, Component } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable} from 'rxjs';
+import { BikeDataService } from './bike-data.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-bike',
   styleUrls: ['./bike.component.scss'],
@@ -10,44 +12,53 @@ import { Observable} from 'rxjs';
     <tr *ngFor="let col of displayedColumns">
       <th>{{col}}</th>
     </tr>
-    <tr *ngFor="let data of datas();">
-      <td>{{data}}</td>
-    </tr>
   </table>
   `
 })
 
 export class BikeComponent implements OnInit {
-
+  dataSource = ELEMENT_DATA;
   displayedColumns: string[] = ['name', 'maker', 'weight', 'class']
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  private httpOptions: any = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    body: null
+  };
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  constructor(private http: HttpClient, private datas: BikeDataService) {}
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    this.datas = Object.assign(new BikeDataService, ELEMENT_DATA);
+    console.log(this.datas);
   }
 
-  datas() {
-    let keys = Object.keys(this.dataSource.data[0])
+  dataToBikesArray(datas: any): any {
+    let keys = Object.keys(this.dataSource)
     let arr = [];
-    for (let d of this.dataSource.data) {
-      arr.push(d[keys[0]]);
-      arr.push(d[keys[1]]);
-      arr.push(d[keys[2]]);
-      arr.push(d[keys[3]]);
-    }
-    return arr;
+    arr.push(datas[keys[0]]);
+    arr.push(datas[keys[1]]);
+    arr.push(datas[keys[2]]);
+    arr.push(datas[keys[3]]);
+    return datas;
+  }
+
+  getReq(): any {
+    this.http.get('http://localhost:4201/bikes', this.httpOptions).toPromise().then((d) => {
+      var bike_datas = [];
+      // var bike_datas = Object.assign(new BikeDataService, d);
+      return bike_datas;
+    });
   }
 }
+
 export interface PeriodicElement {
   name: string;
   maker: string;
   weight: number;
   class: number;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA = [
   { name: 'GSX250R', maker: 'SUZUKI', weight: 134, class: 250},
   { name: 'gixxer', maker: 'SUZUKI', weight: 134, class: 150 },
   { name: 'gixxer sf 250', maker: 'SUZUKI', weight: 184, class: 250 },

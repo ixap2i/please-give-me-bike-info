@@ -5,9 +5,6 @@ const app = express();
 app.listen(4201, function() {
     console.log("Server now listening on 4201");
 });
-// app.listen(4201, '127.0.0.1', function() {
-//     console.log("Server now listening on 4201");
-// });
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -27,7 +24,5 @@ app.get('/', (req, res) => {
     res.send({hello: 'world'});
 });
 app.get('/bikes', (req, res) => {
-    res.send(
-        { name: 'GSX250R', maker: 'SUZUKI', weight: 134, class: 250}
-    );
+    res.json({ name: 'GSX250R', maker: 'SUZUKI', weight: 134, class: 250});
 })

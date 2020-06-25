@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BikeModule } from './bike.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +18,7 @@ import { FormControl, FormGroup, Form, FormBuilder, Validators } from '@angular/
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { BikeComponent } from './bike.component'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // ますとらしい
 import { HammerModule } from '@angular/platform-browser'
@@ -35,9 +35,9 @@ import { HammerModule } from '@angular/platform-browser'
     MatInputModule,
     MatSelectModule,
     HammerModule,
-    BikeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent, BikeComponent
@@ -57,7 +57,6 @@ export class AppModule {
   }
 
   ngOnInit() {
-
     // this.filteredOptions = this.formControl.valueChanges.pipe(
     //   startWith(''),
     //   map(value => this._filter(value))
