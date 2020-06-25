@@ -24,5 +24,10 @@ app.get('/', (req, res) => {
     res.send({hello: 'world'});
 });
 app.get('/bikes', (req, res) => {
-    res.json({ name: 'GSX250R', maker: 'SUZUKI', weight: 134, bclass: 250});
+    res.json([
+      { name: 'GSX250R', maker: 'SUZUKI', weight: 134, bclass: 250},
+      { name: 'gixxer', maker: 'SUZUKI', weight: 134, bclass: 150 },
+      { name: 'gixxer sf 250', maker: 'SUZUKI', weight: 184, bclass: 250 },
+      { name: 'R25', maker: 'YAMAHA', weight: 184, bclass: 250 }
+    ]);
 })

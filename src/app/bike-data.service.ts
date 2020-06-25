@@ -9,5 +9,4 @@ export class BikeDataService {
   maker: string;
   weight: number;
   bclass: number;
-  datas: string[];
 }
