@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "please-give-me-bike-info"
+  "defaultProject": "please-give-me-bike-info",
+  "cli": {
+    "analytics": "c700f64a-3681-4d91-8ec9-1584a0bf3312"
+  }
 }
