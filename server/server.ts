@@ -34,20 +34,18 @@ app.get('/bikes', (req, res) => {
 
 var request = require('request');
 var options = {
-  uri: "https://www.goobike.com/cgi-bin/search/search_syasyu.cgi",
+  url: "http://motorcycle.goobike.com/motorcycle/bike/suzuki.html",
+  method: "GET",
   headers: {
-    "Content-type": "text/html;charset=EUC-JP",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "Content-Type": "application/x-www-form-urlencoded;¥",
+    "Accept": "application/x-www-form-urlencoded,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
     "Accept-Language": "ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7"
   },
-  json: {
-    "maker_cd": "3", "maker": "3", "baitai_name": "", "kind": "", "new_exhaust": "4", "exhaust1": "", "exhaust2": "", "type": "", "genre_id_new": "", "genre_id": "", "group_flag": ""
-  }
+  json: true
 };
 app.get('/goo_bikes', (req, res) => {
-  console.log('test')
-  request.post(options, function(err, resp, req) {
-    res.send(resp.body)
-    console.log(resp.body)
-  })
+  request.get(options,
+  function(err, resp, requ) {
+    res.send(resp.body);
+  });
 })
