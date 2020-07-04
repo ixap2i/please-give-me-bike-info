@@ -1,9 +1,12 @@
 import { ViewChild, OnInit, Component } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { BikeDataService } from './bike-data.service';
+import { BikeBaseService } from './bike-base.service';
+import { BikeDetailService } from './bike-detail.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-bike',
   styleUrls: ['./bike.component.scss'],
@@ -13,15 +16,15 @@ import { catchError, map, tap } from 'rxjs/operators';
       <th *ngFor="let col of displayedColumns">{{col}}</th>
     </tr>
     <tr *ngFor="let d of dataSource">
-      <td>{{d['name']}}</td>
-      <td>{{d['maker']}}</td>
-      <td>{{d['weight']}}</td>
-      <td>{{d['bclass']}}</td>
+      <td><a routerLink="/request_bikes/{{d[1]}}">{{d[0]}}</a></td>
     </tr>
   </table>
   `
 })
-
+// <td>{{d['name']}}</td>
+// <td>{{d['maker']}}</td>
+// <td>{{d['weight']}}</td>
+// <td>{{d['bclass']}}</td>
 export class BikeComponent implements OnInit {
   // dataSource = ELEMENT_DATA;
   dataSource = [];
@@ -33,22 +36,37 @@ export class BikeComponent implements OnInit {
     body: null
   };
 
-  constructor(private http: HttpClient) {
-    this.getReq();
+  constructor(private http: HttpClient, private route: ActivatedRoute, private location: Location) {
+    this.get50ccsBikeNames();
   }
 
   ngOnInit() {
     console.log(this.dataSource[0]);
+    this.request_bikes();
   }
 
 
   getReq() {
-    return this.http.get<BikeDataService[]>('http://localhost:4201/bikes').toPromise().then(res => {
+    return this.http.get<BikeDetailService[]>('http://localhost:4201/bikes').toPromise().then(res => {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
       this.dataSource = res
     });
+  }
+
+  get50ccsBikeNames() {
+    return this.http.get<BikeBaseService[]>('http://localhost:4201/goo_bikes').toPromise().then(res => {
+      if(res instanceof HttpErrorResponse) {
+        return console.log(res)
+      }
+      this.dataSource = res
+    });
+  }
+
+  request_bikes(): void {
+    var id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
   }
 }
 
