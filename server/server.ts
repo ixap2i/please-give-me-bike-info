@@ -45,7 +45,10 @@ var options = {
 };
 
 const puppeteer = require('puppeteer');
-
+var bk50ccs = '';
+var bk125ccs = '';
+var bk250ccs = '';
+var bk400ccs = '';
 (async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
@@ -57,20 +60,20 @@ const puppeteer = require('puppeteer');
       return this.index++;
     }
   }
-  const _50ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(2) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
-  const _125ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(3) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
-  const _250ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(4) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
-  const _400ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(5) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
-  console.log(_50ccs)
-  console.log(_125ccs)
-  console.log(_250ccs)
-  console.log(_400ccs)
+  bk50ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(2) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+  bk125ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(3) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+  bk250ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(4) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+  bk400ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(5) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+  console.log(bk50ccs)
+  console.log(bk125ccs)
+  console.log(bk250ccs)
+  console.log(bk400ccs)
 
-  await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+_250ccs[0][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
+  await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk250ccs[0][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
   const specs = await page.$$eval('#result > table > tbody > tr > td.modelName', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.children[0].href] }) })
   console.log(specs)
 
-  await page.goto(specs[0][1])
+  await page.goto(specs[5][1])
   const page_spec = await page.$$eval('#subCarInfoList', anchors => { return anchors.map(a => { return a.textContent.trim() }) })
   console.log(page_spec)
   await browser.close()
@@ -79,6 +82,6 @@ const puppeteer = require('puppeteer');
 app.get('/goo_bikes', (req, res) => {
   request.get(options,
   function(err, resp, requ) {
-    res.send(resp.body);
+    res.send(bk50ccs);
   });
 })
