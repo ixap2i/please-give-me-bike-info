@@ -15,9 +15,11 @@ import { Location } from '@angular/common';
     <tr>
       <th *ngFor="let col of displayedColumns">{{col}}</th>
     </tr>
-    <tr *ngFor="let d of dataSource">
-      <td>{{d}}</td>
-    </tr>
+    <ng-container *ngFor="let d of dataSource">
+      <tr [innerHTML]="d">
+      </tr>
+    </ng-container>
+
   </table>
   `
 })
