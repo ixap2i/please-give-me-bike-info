@@ -4,9 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 
-export class BikeDataService {
+export class BikeBaseService {
   name: string;
-  maker: string;
-  weight: number;
-  bclass: number;
+  model_number: string
 }
