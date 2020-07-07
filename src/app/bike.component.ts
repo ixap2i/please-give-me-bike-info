@@ -16,19 +16,18 @@ import { Location } from '@angular/common';
       <th *ngFor="let col of displayedColumns">{{col}}</th>
     </tr>
     <tr *ngFor="let d of dataSource">
-      <td><a routerLink="/request_bikes/{{d[1]}}">{{d[0]}}</a></td>
+      <td>{{d}}</td>
     </tr>
   </table>
   `
 })
-// <td>{{d['name']}}</td>
-// <td>{{d['maker']}}</td>
-// <td>{{d['weight']}}</td>
-// <td>{{d['bclass']}}</td>
+// <td><a routerLink="/request_bikes/{{d[1]}}">{{d}}</a></td>
+
 export class BikeComponent implements OnInit {
   // dataSource = ELEMENT_DATA;
-  dataSource = [];
-  displayedColumns: string[] = ['name', 'maker', 'weight', 'class']
+  // dataSource: any = {};
+  dataSource: any = [];
+  displayedColumns: string[] = ['モデル', '年式', '色', '走行距離', 'エンジン', '修理歴', '販売店', '値段'];
   private httpOptions: any = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -41,7 +40,7 @@ export class BikeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.dataSource[0]);
+    // console.log(this.dataSource[0]);
     this.request_bikes();
   }
 
@@ -51,7 +50,7 @@ export class BikeComponent implements OnInit {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
-      this.dataSource = res
+      this.dataSource = res;
     });
   }
 
@@ -60,7 +59,7 @@ export class BikeComponent implements OnInit {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
-      this.dataSource = res
+      this.dataSource = res;
     });
   }
 
