@@ -45,9 +45,12 @@ var options = {
 };
 
 const puppeteer = require('puppeteer');
-const bikedetail = require('./goo-bike.service.ts');
-console.log(bikedetail);
-import BikeDetail from "goo-bike.service.mjs"
+// const types = require('./types/bike-detail.service.mjs');
+// import { createRequire } from "module"
+// const require = createRequire('./types');
+
+// const cjs = require("./bike-detail.service.mjs")
+// console.log()
 var bk50ccs = '';
 var bk125ccs = '';
 var bk250ccs = '';
@@ -70,8 +73,8 @@ var specs_50ccs = [];
   for(var i = 0; i < bk50ccs.length; i++) {
     // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
     await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk250ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
-    specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return new BikeDetail(a.textContent.trim().split(/\n/)); }) })
-    // specs = await page.$$eval('#result > table > tbody > tr > td.modelName', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.children[0].href] }) })
+    specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
+    specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/,/g, '<td>').replace(/><td><\/td></g, '><');
     specs_50ccs.push(specs);
   }
 
@@ -87,3 +90,6 @@ app.get('/goo_bikes', (req, res) => {
     res.send(specs_50ccs.flat());
   });
 })
+
+
+class Test {}

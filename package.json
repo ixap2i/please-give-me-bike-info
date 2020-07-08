@@ -9,8 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "node ./ng-add-pug-loader.js",
-    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"server/node_modules/.bin/ts-node-dev server/server.ts\""
+    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"server/node_modules/.bin/ts-node-dev server/server.ts  --experimental-modules\""
   },
+  "type": "module",
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.9",
@@ -26,6 +27,7 @@
     "bootstrap-material-design": "^4.1.1",
     "concurrently": "^5.2.0",
     "express": "^4.17.1",
+    "module": "^1.2.5",
     "ng-cli-pug-loader": "^0.2.2",
     "puppeteer": "^4.0.1",
     "rxjs": "~6.5.4",

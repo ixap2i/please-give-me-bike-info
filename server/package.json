@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "concurrently ng serve server/node_module/.bin/ts-node-dev server/server.ts"
@@ -17,6 +18,5 @@
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^6.1.2",
     "typescript": "^3.9.3"
-  },
-  "type": "module"
+  }
 }
