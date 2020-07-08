@@ -1,0 +1,42 @@
+.a-table {
+  font-family: Roboto,Helvetica Neue,sans-serif;
+  background: #424242f0;
+  color: hsla(0,0%,100%,.9);
+  padding: 0 28px;
+  position: relative;
+  height: 300px;
+  width: 100%;
+  tr {
+    border-bottom: solid #fff 1px;
+    height: 45px;
+  }
+  th {
+  }
+  .__fixedTr {
+
+  }
+}
+
+.a-title {
+  &__engine {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-bottom: solid #494949 1px;
+    margin: 10px 15px;
+    font-weight: 800;
+  }
+}
+
+.m-bike {
+  background-image: url(./assets/f0989_1.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.p-bike {
+  background: #E5E5E5;
+  height: 400px;
+  margin-top: 30px;
+}
+

@@ -11,16 +11,20 @@ import { Location } from '@angular/common';
   selector: 'app-bike',
   styleUrls: ['./bike.component.scss'],
   template: `
-  <table>
-    <tr>
-      <th *ngFor="let col of displayedColumns">{{col}}</th>
-    </tr>
-    <ng-container *ngFor="let d of dataSource">
-      <tr [innerHTML]="d">
-      </tr>
-    </ng-container>
-
-  </table>
+  <div class="p-bike">
+    <div class="a-title__engine">50cc</div>
+    <div class="m-bike">
+      <table class="a-table">
+        <tr>
+          <th *ngFor="let col of displayedColumns">{{col}}</th>
+        </tr>
+        <ng-container *ngFor="let d of dataSource">
+          <tr [innerHTML]="d">
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  <div>
   `
 })
 // <td><a routerLink="/request_bikes/{{d[1]}}">{{d}}</a></td>
