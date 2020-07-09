@@ -17,12 +17,17 @@
     position: relative;
     width: 200px;
     height: 200px;
+    transition-duration: 3s;
+    ::before {
+      content: url('./assets/f0989_hov.png');
+      position: absolute;
+      top: -24px;
+      left: -28px;
+      opacity: 0;
+    }
     &:hover {
       ::before {
-        content: url('./assets/f0989_hov.png');
-        position: absolute;
-        top: -24px;
-        left: -28px;
+        animation: 1s ease-in circle forwards;
       }
     }
     span {
@@ -56,4 +61,18 @@
   margin: 10vh 0;
   height: 100%;
   width: 100%;
+}
+
+@keyframes circle {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
