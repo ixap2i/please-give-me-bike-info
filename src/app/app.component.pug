@@ -1,17 +1,18 @@
 <div>
 mat-toolbar(min="1" max="100" step="1" value="1")
   |please-give-me-bike-info
-
   form
     mat-form-field
       mat-label
-        | Let's enter bike name.
+        | Let me see...
       mat-icon(matSuffix)
-        |search
+        | search
       input(type="text"
             placeholder="Pick one"
             aria-label="Number"
             matInput)
+      mat-autocomplete(autoActiveFirstOption #auto="matAutocomplete")
+        mat-option(*ngFor="let option of filteredOptions | async" [value]="option") = #{option}
 img(src="assets/bk_gixxer.jpg" style="height: 330px; width: 100%; filter: hue-rotate(45deg);")
 mat-card(min="1" max="100" step="1" value="1" class="a-description")
   | このアプリはSUZUKIのメーカーに限ってバイク情報をスクレイピングしています🙇‍♂️

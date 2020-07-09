@@ -46,26 +46,6 @@ import { HammerModule } from '@angular/platform-browser'
   bootstrap: [AppComponent, BikeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class AppModule {
-  filteredOptions: Observable<string[]>;
-
-  formControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-
-  constructor(overlayContainer: OverlayContainer, private _fg: FormBuilder) {
-    overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
-  }
-
-  ngOnInit() {
-    // this.filteredOptions = this.formControl.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value))
-    // );
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-  }
 }
