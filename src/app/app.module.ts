@@ -17,7 +17,9 @@ import {OverlayContainer} from '@angular/cdk/overlay';
 import { FormControl, FormGroup, Form, FormBuilder, Validators } from '@angular/forms';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+import { BikeMenuComponent } from './bike.menu.component'
 import { BikeComponent } from './bike.component'
+import { HeaderComponent } from './header.component'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // ますとらしい
@@ -40,32 +42,12 @@ import { HammerModule } from '@angular/platform-browser'
     HttpClientModule
   ],
   declarations: [
-    AppComponent, BikeComponent
+    AppComponent, BikeMenuComponent, BikeComponent, HeaderComponent
   ],
   providers: [],
-  bootstrap: [AppComponent, BikeComponent],
+  bootstrap: [AppComponent, BikeMenuComponent, BikeComponent, HeaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class AppModule {
-  filteredOptions: Observable<string[]>;
-
-  formControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-
-  constructor(overlayContainer: OverlayContainer, private _fg: FormBuilder) {
-    overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
-  }
-
-  ngOnInit() {
-    // this.filteredOptions = this.formControl.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value))
-    // );
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-  }
 }
