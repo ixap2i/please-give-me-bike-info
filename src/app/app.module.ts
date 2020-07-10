@@ -19,7 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { BikeMenuComponent } from './bike-menu/bike.menu.component'
 import { BikeComponent } from './bike-data/bike.component'
-import { CreditMenuComponent } from './credit-menu.component'
+import { CreditMenuComponent } from './credit-menu/credit-menu.component'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // ますとらしい
