@@ -19,7 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { BikeMenuComponent } from './bike.menu.component'
 import { BikeComponent } from './bike.component'
-import { HeaderComponent } from './header.component'
+import { CreditMenuComponent } from './credit-menu.component'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // ますとらしい
@@ -42,10 +42,10 @@ import { HammerModule } from '@angular/platform-browser'
     HttpClientModule
   ],
   declarations: [
-    AppComponent, BikeMenuComponent, BikeComponent, HeaderComponent
+    AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent
   ],
   providers: [],
-  bootstrap: [AppComponent, BikeMenuComponent, BikeComponent, HeaderComponent],
+  bootstrap: [AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
