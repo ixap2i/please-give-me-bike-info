@@ -11,16 +11,14 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
-import { Observable } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
-import {OverlayContainer} from '@angular/cdk/overlay';
-import { FormControl, FormGroup, Form, FormBuilder, Validators } from '@angular/forms';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { BikeMenuComponent } from './bike-menu/bike.menu.component'
+import { BikeMenuComponent } from './bike-engine-menu/bike.menu.component'
 import { BikeComponent } from './bike-data/bike.component'
+import { OwnerComponent } from './owner/owner.component'
 import { CreditMenuComponent } from './credit-menu/credit-menu.component'
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SearchMenuComponent } from './search-menu/search-menu.component'
+import { HttpClientModule } from '@angular/common/http';
 
 // ますとらしい
 import { HammerModule } from '@angular/platform-browser'
@@ -42,10 +40,10 @@ import { HammerModule } from '@angular/platform-browser'
     HttpClientModule
   ],
   declarations: [
-    AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent
+    AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent, OwnerComponent, SearchMenuComponent
   ],
   providers: [],
-  bootstrap: [AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent],
+  bootstrap: [AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent, SearchMenuComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
