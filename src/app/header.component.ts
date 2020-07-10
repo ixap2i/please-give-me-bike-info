@@ -27,6 +27,20 @@ import {
       transition('scroll-down => scroll-up',[
         animate('1s')
       ])
+    ]),
+    trigger('appear-top-icon',[
+      state('appear-icon', style({
+        opacity: 1
+      })),
+      state('disappear-icon', style({
+        opacity: 0
+      })),
+      transition('appear-icon => disappear-icon', [
+        animate('1s')
+      ]),
+      transition('disappear-icon => appear-icon', [
+        animate('0.3s')
+      ])
     ])
   ]
 })
