@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./bike.component.scss'],
   template: `
   <div class="p-bike">
-    <div class="a-title__engine">50cc</div>
+    <div class="a-title__engine" id="50cc">50cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>
@@ -24,7 +24,7 @@ import { Location } from '@angular/common';
         </ng-container>
       </table>
     </div>
-    <div class="a-title__engine">250cc</div>
+    <div class="a-title__engine" id="250cc">250cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>
@@ -36,7 +36,7 @@ import { Location } from '@angular/common';
         </ng-container>
       </table>
     </div>
-    <div class="a-title__engine">400cc</div>
+    <div class="a-title__engine" id="400cc">400cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>
