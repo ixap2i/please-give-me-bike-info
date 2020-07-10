@@ -22,13 +22,14 @@ a {
   }
   &__balloon {
     background: rgb(200, 243, 229);
+    border: gray 1px solid;
     content: '';
     position: absolute;
     height: 11vh;
     width: 20vw;
     border-radius: 11px;
     padding: 1.3em 1em;
-    top: calc(-100px + -1.3em);
+    top: calc(-100px + -2.3em);
     ::before {
       content: '';
       width: 0;
