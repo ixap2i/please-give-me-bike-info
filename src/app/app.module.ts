@@ -17,7 +17,7 @@ import {OverlayContainer} from '@angular/cdk/overlay';
 import { FormControl, FormGroup, Form, FormBuilder, Validators } from '@angular/forms';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { BikeMenuComponent } from './bike.menu.component'
+import { BikeMenuComponent } from './bike-menu/bike.menu.component'
 import { BikeComponent } from './bike-data/bike.component'
 import { CreditMenuComponent } from './credit-menu.component'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
