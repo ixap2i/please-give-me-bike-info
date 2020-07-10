@@ -1,8 +1,7 @@
 import { ViewChild, OnInit, Component } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { BikeBaseService } from './bike-base.service';
-import { BikeDetailService } from './bike-detail.service';
+import { BikeBaseService } from '../bike-base.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
