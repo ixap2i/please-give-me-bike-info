@@ -7,9 +7,9 @@ import {
   transition
 } from '@angular/animations';
 @Component({
-  selector: 'top-header',
-  styleUrls: ['./header.component.scss'],
-  templateUrl: './header.component.pug',
+  selector: 'credit-menu',
+  styleUrls: ['./credit-menu.scss'],
+  templateUrl: './credit-menu.pug',
   animations: [
     trigger('mouse-scroll', [
       state('scroll-up', style({
@@ -44,13 +44,13 @@ import {
     ])
   ]
 })
-export class HeaderComponent {
+export class CreditMenuComponent {
   constructor() {}
   isStopped = false;
-
+  blackTableArea = 230;
   @HostListener('window:scroll', ['$event'])
   scroll($event) {
-    if ($event.currentTarget.window.pageYOffset > 230) {
+    if ($event.currentTarget.window.pageYOffset > this.blackTableArea) {
       this.isStopped = false;
     } else {
       this.isStopped = true;
