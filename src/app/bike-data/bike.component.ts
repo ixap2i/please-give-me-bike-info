@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-bike',
+  selector: 'bike-data',
   styleUrls: ['./bike.component.scss'],
   template: `
   <div class="p-bike">
