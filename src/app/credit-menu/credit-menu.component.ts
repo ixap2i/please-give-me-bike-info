@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'credit-menu',
   styleUrls: ['./credit-menu.scss'],
-  templateUrl: './credit-menu.pug',
+  templateUrl: './credit-menu.html',
   animations: [
     trigger('mouse-scroll', [
       state('scroll-up', style({

@@ -18,7 +18,7 @@ import {
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.pug',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('hover-cursor', [

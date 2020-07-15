@@ -2,7 +2,7 @@
 @Component({
   selector: 'search-menu',
   styleUrls: ['./search-menu.scss'],
-  templateUrl: './search-menu.pug'
+  templateUrl: './search-menu.html'
 })
 
 export class SearchMenuComponent {
