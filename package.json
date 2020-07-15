@@ -8,7 +8,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "node ./ng-add-pug-loader.js",
     "serve": "concurrently \"ng serve --host 0.0.0.0\" \"server/node_modules/.bin/ts-node-dev server/server.ts  --experimental-modules\""
   },
   "type": "module",
@@ -28,7 +27,6 @@
     "concurrently": "^5.2.0",
     "express": "^4.17.1",
     "module": "^1.2.5",
-    "ng-cli-pug-loader": "^0.2.2",
     "puppeteer": "^4.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
@@ -53,7 +51,6 @@
     "protractor": "~7.0.0",
     "pug": "^2.0.4",
     "pug-cli": "^1.0.0-alpha6",
-    "pug-loader": "^2.4.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
