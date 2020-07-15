@@ -54,55 +54,72 @@ var specs_250ccs = [];
 var specs_400ccs = [];
 
 var bike_scraping_50 = (async () => {
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  await page.setViewport({ width: 1280, height: 1800 })
-  await page.goto('http://motorcycle.goobike.com/motorcycle/bike/suzuki.html')
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
+  try {
+    const page = await browser.newPage()
+    await page.setViewport({ width: 1280, height: 1800 })
+    await page.goto('http://motorcycle.goobike.com/motorcycle/bike/suzuki.html')
 
-  bk50ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(2) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+    bk50ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(2) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
 
-  for(var i = 0; i < bk50ccs.length; i++) {
-    // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
-    await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk50ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
-    specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
-    specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/,/g, '<td>').replace(/><td><\/td></g, '><');
-    specs_50ccs.push(specs);
+    for(var i = 0; i < bk50ccs.length; i++) {
+      // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
+      await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk50ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
+      specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
+      specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/,/g, '<td>').replace(/><td><\/td></g, '><');
+      specs_50ccs.push(specs);
+    }
+  } catch(e) {
+    console.log(e);
+  } finally {
+    await browser.close()
   }
-  await browser.close()
 })()
 var bike_scraping_250 = (async () => {
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  await page.setViewport({ width: 1280, height: 1800 })
-  await page.goto('http://motorcycle.goobike.com/motorcycle/bike/suzuki.html')
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
 
-  bk250ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(4) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+  try {
+    const page = await browser.newPage()
+    await page.setViewport({ width: 1280, height: 1800 })
+    await page.goto('http://motorcycle.goobike.com/motorcycle/bike/suzuki.html')
 
-  for(var i = 0; i < bk250ccs.length; i++) {
-    // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
-    await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk250ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
-    specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
-    specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/,/g, '<td>').replace(/><td><\/td></g, '><');
-    specs_250ccs.push(specs);
+    bk250ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(4) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+
+    for(var i = 0; i < bk250ccs.length; i++) {
+      // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
+      await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk250ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
+      specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
+      specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/,/g, '<td>').replace(/><td><\/td></g, '><');
+      specs_250ccs.push(specs);
+    }
+  } catch(e) {
+    console.log(e);
+  } finally {
+    await browser.close()
   }
-  await browser.close()
 })()
 var bike_scraping_400 = (async () => {
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  await page.setViewport({ width: 1280, height: 1800 })
-  await page.goto('http://motorcycle.goobike.com/motorcycle/bike/suzuki.html')
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
 
-  bk400ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(5) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+  try {
+    const page = await browser.newPage()
+    await page.setViewport({ width: 1280, height: 1800 })
+    await page.goto('http://motorcycle.goobike.com/motorcycle/bike/suzuki.html')
 
-  for(var i = 0; i < bk400ccs.length; i++) {
-    // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
-    await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk400ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
-    specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
-    specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/,/g, '<td>').replace(/><td><\/td></g, '><');
-    specs_400ccs.push(specs);
+    bk400ccs = await page.$$eval('#main > form:nth-child(2) > div > dl:nth-child(5) > dd > ul > li', anchors => { return anchors.map(a => { return [a.textContent.trim(), a.firstChild.value] }) })
+
+    for(var i = 0; i < bk400ccs.length; i++) {
+      // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
+      await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk400ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
+      specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
+      specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/,/g, '<td>').replace(/><td><\/td></g, '><');
+      specs_400ccs.push(specs);
+    }
+  } catch(e) {
+    console.log(e);
+  } finally {
+    await browser.close()
   }
-  await browser.close()
 })()
 // 非同期で取得しているので、排気量別に取得したものは別々にページに返す必要がある
 bike_scraping_50
