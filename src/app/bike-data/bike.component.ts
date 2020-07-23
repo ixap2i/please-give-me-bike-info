@@ -1,18 +1,17 @@
 import { ViewChild, OnInit, Component } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { BikeBaseService } from './bike-base.service';
-import { BikeDetailService } from './bike-detail.service';
+import { BikeBaseService } from '../bike-base.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-bike',
+  selector: 'bike-data',
   styleUrls: ['./bike.component.scss'],
   template: `
   <div class="p-bike">
-    <div class="a-title__engine">50cc</div>
+    <div class="a-title__engine" id="50cc">50cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>
@@ -24,7 +23,7 @@ import { Location } from '@angular/common';
         </ng-container>
       </table>
     </div>
-    <div class="a-title__engine">250cc</div>
+    <div class="a-title__engine" id="250cc">250cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>
@@ -36,7 +35,7 @@ import { Location } from '@angular/common';
         </ng-container>
       </table>
     </div>
-    <div class="a-title__engine">400cc</div>
+    <div class="a-title__engine" id="400cc">400cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>

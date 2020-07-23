@@ -27,7 +27,7 @@
 }
 
 .m-bike {
-  background-image: url(./assets/f0989_1.png);
+  background-image: url(../assets/f0989_1.png);
   background-repeat: no-repeat;
   background-position: center bottom;
   height: 300px;
@@ -36,7 +36,8 @@
 
 .p-bike {
   background: #E5E5E5;
-  height: 400px;
-  margin-top: 30px;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.12);
+  margin: 35px 0;
+  padding-top: 30px;
 }
 

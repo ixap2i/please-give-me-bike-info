@@ -1,0 +1,86 @@
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.a-icon {
+  &-top {
+    background:rgba(73, 73, 73, 0.5);
+    border: 1px solid #000;
+    border-radius: 200px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transition-duration: 3s;
+    ::before {
+      content: url('../assets/f0989_hov.png');
+      position: absolute;
+      top: -24px;
+      left: -28px;
+      opacity: 0;
+    }
+    &:hover {
+      ::before {
+        animation: 1s ease-in circle forwards;
+      }
+    }
+    span {
+      margin-top: 120px;
+    }
+    .__gas {
+      margin-top: 50px;
+      position: absolute;
+      height: 60px;
+      width: 60px;
+    }
+    .__mc {
+      margin-top: 50px;
+      position: absolute;
+      height: 64px;
+      width: 64px;
+    }
+    .__img {
+      margin-top: 50px;
+      position: absolute;
+      height: 60px;
+      width: 60px;
+    }
+  }
+}
+
+.a-text {
+  &.-caution {
+    bottom: -2em;
+    margin-left: 5em;
+    color: rgb(206, 13, 13);
+    position: absolute;
+    text-decoration: underline;
+  }
+}
+
+.m-menu {
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10vh 0;
+  padding-bottom: 150px;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes circle {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

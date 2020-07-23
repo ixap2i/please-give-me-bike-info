@@ -7,9 +7,9 @@ import {
   transition
 } from '@angular/animations';
 @Component({
-  selector: 'top-header',
-  styleUrls: ['./header.component.scss'],
-  templateUrl: './header.component.pug',
+  selector: 'credit-menu',
+  styleUrls: ['./credit-menu.scss'],
+  templateUrl: './credit-menu.html',
   animations: [
     trigger('mouse-scroll', [
       state('scroll-up', style({
@@ -27,16 +27,30 @@ import {
       transition('scroll-down => scroll-up',[
         animate('1s')
       ])
+    ]),
+    trigger('appear-top-icon',[
+      state('appear-icon', style({
+        opacity: 1
+      })),
+      state('disappear-icon', style({
+        opacity: 0
+      })),
+      transition('appear-icon => disappear-icon', [
+        animate('1s')
+      ]),
+      transition('disappear-icon => appear-icon', [
+        animate('0.3s')
+      ])
     ])
   ]
 })
-export class HeaderComponent {
+export class CreditMenuComponent {
   constructor() {}
   isStopped = false;
-
+  blackTableArea = 230;
   @HostListener('window:scroll', ['$event'])
   scroll($event) {
-    if ($event.currentTarget.window.pageYOffset > 230) {
+    if ($event.currentTarget.window.pageYOffset > this.blackTableArea) {
       this.isStopped = false;
     } else {
       this.isStopped = true;
