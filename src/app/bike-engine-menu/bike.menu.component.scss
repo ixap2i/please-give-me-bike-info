@@ -1,0 +1,54 @@
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.a-icon {
+  &-engine {
+    background:rgba(156, 154, 154, 0.5);
+    border: 1px solid #000;
+    border-radius: 200px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 150px;
+    height: 20px;
+    transition-duration: 0.5s;
+    &:hover {
+      margin-top: 3px;
+      margin-left: 4px;
+    }
+  }
+  &__balloon {
+    background: rgb(200, 243, 229);
+    border: gray 1px solid;
+    content: '';
+    position: absolute;
+    height: 11vh;
+    width: 20vw;
+    border-radius: 11px;
+    padding: 1.3em 1em;
+    top: calc(-100px + -2.3em);
+    ::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 17px 6.5px 0 6.5px;
+      border-color: #c6f3f9 transparent transparent transparent;
+    }
+  }
+}
+
+.m-menu {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+}
+
+.p-bikeMenu {
+  height: 43vh;
+}

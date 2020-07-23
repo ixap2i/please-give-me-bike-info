@@ -1,0 +1,8 @@
+<nav class="m-menu" [@mouse-scroll]="isStopped ? 'scroll-down':'scroll-up'">
+  <ul class="m-menu__menuBar">
+    <li>@2020 ixap2i</li>
+  </ul>
+  <a href="#top">
+    <div class="a-icon__toTop" [@appear-top-icon]="isStopped ? 'disappear-icon':'appear-icon'">TOPへ&nbsp;↑<img class="a-icon__gixxer" src="/assets/gix_icon.png" /></div>
+  </a>
+</nav>

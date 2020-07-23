@@ -1,0 +1,21 @@
+<div>
+  <mat-toolbar min="1" max="100" step="1" value="1" id="top">please-give-me-bike-info
+    <form>
+      <mat-form-field>
+        <mat-label>Let me see...</mat-label>
+        <mat-icon matSuffix="matSuffix">search</mat-icon><input type="text" placeholder="Pick one" aria-label="Number" matInput="matInput" />
+        <mat-autocomplete autoActiveFirstOption="autoActiveFirstOption" #auto="matAutocomplete">
+          <mat-option *ngFor="option">= </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      </form>
+  </mat-toolbar><img src="assets/bk_gixxer.jpg" style="height: 330px; width: 100%; filter: hue-rotate(45deg);" />
+  <mat-card class="a-description" min="1" max="100" step="1" value="1">このアプリはSUZUKIのメーカーに限ってバイク情報をスクレイピングしています🙇‍♂️
+    <p></p>こちらの情報を参照し、利用した場合に生じる不利益などについては、製作者は一切責任を持ちません。
+    <p></p>ご理解いただけた方のみ下記から利用を開始してください。</mat-card>
+  <router-outlet></router-outlet>
+  <search-menu></search-menu>
+  <bike-engine-menu></bike-engine-menu>
+  <bike-data></bike-data>
+  <credit-menu></credit-menu>
+</div>
