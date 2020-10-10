@@ -6,5 +6,30 @@ import { Injectable } from '@angular/core';
 
 export class BikeBaseService {
   name: string;
-  model_number: string
+  model_number: string;
+  status: string;
+  color: string;
+  distance: string;
+  place: string;
+  price: string;
+
+
+  setName(name: string) {
+    this.name = name;
+  }
+  setStatus(status: string) {
+    this.status = status;
+  }
+  setColor(color: string) {
+    this.color = color;
+  }
+  setDistance(distance: string) {
+    this.distance = distance;
+  }
+  setPlace(place: string) {
+    this.place = place;
+  }
+  setPrice(price: string) {
+    this.price = price;
+  }
 }

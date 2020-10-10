@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs'
+
 @Component({
   selector: 'bike-data',
   styleUrls: ['./bike.component.scss'],
@@ -17,8 +19,15 @@ import { Location } from '@angular/common';
         <tr>
           <th *ngFor="let col of displayedColumns">{{col}}</th>
         </tr>
-        <ng-container *ngFor="let d of dataSource_50">
-          <tr [innerHTML]="d">
+        <ng-container>
+          <tr *ngFor="let d of dataSource_50">
+            <td>{{d.name}}</td>
+            <td>{{d.model_number}}</td>
+            <td>{{d.status}}</td>
+            <td>{{d.color}}</td>
+            <td>{{d.distance}}</td>
+            <td>{{d.place}}</td>
+            <td>{{d.price}}</td>
           </tr>
         </ng-container>
       </table>
@@ -30,7 +39,14 @@ import { Location } from '@angular/common';
           <th *ngFor="let col of displayedColumns">{{col}}</th>
         </tr>
         <ng-container *ngFor="let d of dataSource_250">
-          <tr [innerHTML]="d">
+          <tr>
+            <td>{{d.name}}</td>
+            <td>{{d.model_number}}</td>
+            <td>{{d.status}}</td>
+            <td>{{d.color}}</td>
+            <td>{{d.distance}}</td>
+            <td>{{d.place}}</td>
+            <td>{{d.price}}</td>
           </tr>
         </ng-container>
       </table>
@@ -42,7 +58,14 @@ import { Location } from '@angular/common';
           <th *ngFor="let col of displayedColumns">{{col}}</th>
         </tr>
         <ng-container *ngFor="let d of dataSource_400">
-          <tr [innerHTML]="d">
+          <tr>
+            <td>{{d.name}}</td>
+            <td>{{d.model_number}}</td>
+            <td>{{d.status}}</td>
+            <td>{{d.color}}</td>
+            <td>{{d.distance}}</td>
+            <td>{{d.place}}</td>
+            <td>{{d.price}}</td>
           </tr>
         </ng-container>
       </table>
@@ -64,15 +87,22 @@ export class BikeComponent implements OnInit {
     body: null
   };
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private location: Location) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private location: Location, public bikeBaseService: BikeBaseService) {
     this.get50ccsBikeNames();
     this.get250ccsBikeNames();
     this.get400ccsBikeNames();
   }
 
+  setBikeData(dataJson: string) {
+    this.bikeBaseService.setName(dataJson['name']);
+    this.bikeBaseService.setStatus(dataJson['status']);
+    this.bikeBaseService.setColor(dataJson['color']);
+    this.bikeBaseService.setDistance(dataJson['distance']);
+    this.bikeBaseService.setPlace(dataJson['place']);
+    this.bikeBaseService.setPrice(dataJson['price']);
+  }
+
   ngOnInit() {
-    // console.log(this.dataSource[0]);
-    this.request_bikes();
   }
 
   get50ccsBikeNames() {
@@ -80,7 +110,12 @@ export class BikeComponent implements OnInit {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
-      this.dataSource_50 = res;
+      var bikeServices_50 = [];
+
+      res.some(function(el) {
+        bikeServices_50.push(JSON.parse(el.toString()));
+      });
+      this.dataSource_50 = bikeServices_50;
     });
   }
 
@@ -89,7 +124,12 @@ export class BikeComponent implements OnInit {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
-      this.dataSource_250 = res;
+      var bikeServices_250 = [];
+
+      res.some(function(el) {
+        bikeServices_250.push(JSON.parse(el.toString()));
+      });
+      this.dataSource_250 = bikeServices_250;
     });
   }
 
@@ -98,7 +138,12 @@ export class BikeComponent implements OnInit {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
-      this.dataSource_400 = res;
+      var bikeServices_400 = [];
+
+      res.some(function(el) {
+        bikeServices_400.push(JSON.parse(el.toString()));
+      });
+      this.dataSource_400 = bikeServices_400;
     });
   }
 
