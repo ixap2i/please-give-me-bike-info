@@ -1,12 +1,9 @@
 import { ViewChild, OnInit, Component } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { BikeBaseService } from '../bike-base.service';
+import { TABLE_COLUMNS } from '../bike-base.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs'
 
 @Component({
   selector: 'bike-data',
@@ -17,12 +14,12 @@ import { Observable } from 'rxjs'
     <div class="m-bike">
       <table class="a-table">
         <tr>
-          <th *ngFor="let col of displayedColumns">{{col}}</th>
+          <th *ngFor="let col of TABLE_COLUMNS">{{col}}</th>
         </tr>
         <ng-container>
           <tr *ngFor="let d of dataSource_50">
             <td>{{d.name}}</td>
-            <td>{{d.model_number}}</td>
+            <td>{{d.model_number ? d.model_number : '-'}}</td>
             <td>{{d.status}}</td>
             <td>{{d.color}}</td>
             <td>{{d.distance}}</td>
@@ -36,12 +33,12 @@ import { Observable } from 'rxjs'
     <div class="m-bike">
       <table class="a-table">
         <tr>
-          <th *ngFor="let col of displayedColumns">{{col}}</th>
+          <th *ngFor="let col of TABLE_COLUMNS">{{col}}</th>
         </tr>
         <ng-container *ngFor="let d of dataSource_250">
           <tr>
             <td>{{d.name}}</td>
-            <td>{{d.model_number}}</td>
+            <td>{{d.model_number ? d.model_number : '-'}}</td>
             <td>{{d.status}}</td>
             <td>{{d.color}}</td>
             <td>{{d.distance}}</td>
@@ -55,12 +52,12 @@ import { Observable } from 'rxjs'
     <div class="m-bike">
       <table class="a-table">
         <tr>
-          <th *ngFor="let col of displayedColumns">{{col}}</th>
+          <th *ngFor="let col of TABLE_COLUMNS">{{col}}</th>
         </tr>
         <ng-container *ngFor="let d of dataSource_400">
           <tr>
             <td>{{d.name}}</td>
-            <td>{{d.model_number}}</td>
+            <td>{{d.model_number ? d.model_number : '-'}}</td>
             <td>{{d.status}}</td>
             <td>{{d.color}}</td>
             <td>{{d.distance}}</td>
@@ -73,21 +70,14 @@ import { Observable } from 'rxjs'
   <div>
   `
 })
-// <td><a routerLink="/request_bikes/{{d[1]}}">{{d}}</a></td>
 
 export class BikeComponent implements OnInit {
   dataSource_50: any = [];
   dataSource_250: any = [];
   dataSource_400: any = [];
-  displayedColumns: string[] = ['モデル', '年式', '色', '走行距離', 'エンジン', '修理歴', '販売店', '値段'];
-  private httpOptions: any = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    }),
-    body: null
-  };
+  TABLE_COLUMNS: string[] = TABLE_COLUMNS;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private location: Location, public bikeBaseService: BikeBaseService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, public bikeBaseService: BikeBaseService) {
     this.get50ccsBikeNames();
     this.get250ccsBikeNames();
     this.get400ccsBikeNames();

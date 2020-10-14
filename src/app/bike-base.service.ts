@@ -13,7 +13,6 @@ export class BikeBaseService {
   place: string;
   price: string;
 
-
   setName(name: string) {
     this.name = name;
   }
@@ -33,3 +32,13 @@ export class BikeBaseService {
     this.price = price;
   }
 }
+
+export const TABLE_COLUMNS = [
+  '車種',
+  '年式',
+  '状態',
+  '色',
+  '走行距離',
+  '販売場所',
+  '値段'
+];
