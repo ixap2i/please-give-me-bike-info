@@ -12,7 +12,7 @@ export class BikeBaseService {
   distance: string;
   place: string;
   price: string;
-
+  imgUrl: string;
   setName(name: string) {
     this.name = name;
   }
@@ -31,9 +31,13 @@ export class BikeBaseService {
   setPrice(price: string) {
     this.price = price;
   }
+  setImage(imgUrl: string) {
+    this.imgUrl = imgUrl;
+  }
 }
 
 export const TABLE_COLUMNS = [
+  '',
   '車種',
   '年式',
   '状態',

@@ -49,6 +49,7 @@ var bk50ccs = '';
 var bk250ccs = '';
 var bk400ccs = '';
 var specs = [];
+var spec_img = '';
 var specs_50ccs = [];
 var specs_250ccs = [];
 var specs_400ccs = [];
@@ -67,14 +68,18 @@ var bike_scraping_50 = (async () => {
       await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk50ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end=')
       specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
       specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/^,/g, '').split(/,/);
+      spec_img = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2) > td.modelName > a > img', anchors => { return anchors.map(img => { return img.getAttribute('src'); }) })
       var new_specs = specs.filter(el => { return el !== null && typeof(el) !== undefined && el !== ""; })
       var data = '{"name":"'+new_specs[0].toString()+'",'
       +'"status":"'+new_specs[1].toString()+'",'
       +'"color":"'+new_specs[2].toString()+'",'
       +'"distance":"'+new_specs[3].toString()+'",'
       +'"place":"'+new_specs[4].toString()+'",'
-      +'"price":"'+new_specs[5].toString()+'"'+
+      +'"price":"'+new_specs[5].toString()+'",'
+      +'"imgUrl":"'+spec_img[0].toString()+'"'+
       '}'
+      console.log(spec_img[0]);
+      console.log(data);
       specs_50ccs.push(data);
     }
   } catch(e) {
@@ -100,12 +105,15 @@ var bike_scraping_250 = (async () => {
       specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/^,/g, '').split(/,/);
 
       var new_specs = specs.filter(el => { return el !== null && typeof(el) !== undefined && el !== ""; })
+      spec_img = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2) > td.modelName > a > img', anchors => { return anchors.map(img => { return img.getAttribute('src'); }) })
+
       var data = '{"name":"'+new_specs[0].toString()+'",'
       +'"status":"'+new_specs[1].toString()+'",'
       +'"color":"'+new_specs[2].toString()+'",'
       +'"distance":"'+new_specs[3].toString()+'",'
       +'"place":"'+new_specs[4].toString()+'",'
-      +'"price":"'+new_specs[5].toString()+'"'+
+      +'"price":"'+new_specs[5].toString()+'",'
+      +'"imgUrl":"'+spec_img[0].toString()+'"'+
       '}'
       specs_250ccs.push(data);
     }
@@ -131,12 +139,15 @@ var bike_scraping_400 = (async () => {
       specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })
       specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3}/g, '').replace(/^,/g, '').split(/,/);
       var new_specs = specs.filter(el => { return el !== null && typeof(el) !== undefined && el !== ""; })
+      spec_img = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2) > td.modelName > a > img', anchors => { return anchors.map(img => { return img.getAttribute('src'); }) })
+
       var data = '{"name":"'+new_specs[0].toString()+'",'
       +'"status":"'+new_specs[1].toString()+'",'
       +'"color":"'+new_specs[2].toString()+'",'
       +'"distance":"'+new_specs[3].toString()+'",'
       +'"place":"'+new_specs[4].toString()+'",'
-      +'"price":"'+new_specs[5].toString()+'"'+
+      +'"price":"'+new_specs[5].toString()+'",'
+      +'"imgUrl":"'+spec_img[0].toString()+'"'
       '}'
 
       specs_400ccs.push(data);

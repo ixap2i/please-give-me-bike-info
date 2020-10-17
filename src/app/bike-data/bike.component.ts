@@ -18,6 +18,7 @@ import { Location } from '@angular/common';
         </tr>
         <ng-container>
           <tr *ngFor="let d of dataSource_50">
+            <td><img src="{{d.imgUrl}}" /></td>
             <td>{{d.name}}</td>
             <td>{{d.model_number ? d.model_number : '-'}}</td>
             <td>{{d.status}}</td>
@@ -37,6 +38,7 @@ import { Location } from '@angular/common';
         </tr>
         <ng-container *ngFor="let d of dataSource_250">
           <tr>
+            <td><img src="{{d.imgUrl}}" /></td>
             <td>{{d.name}}</td>
             <td>{{d.model_number ? d.model_number : '-'}}</td>
             <td>{{d.status}}</td>
@@ -56,6 +58,7 @@ import { Location } from '@angular/common';
         </tr>
         <ng-container *ngFor="let d of dataSource_400">
           <tr>
+            <td><img src="{{d.imgUrl}}" /></td>
             <td>{{d.name}}</td>
             <td>{{d.model_number ? d.model_number : '-'}}</td>
             <td>{{d.status}}</td>
@@ -90,6 +93,7 @@ export class BikeComponent implements OnInit {
     this.bikeBaseService.setDistance(dataJson['distance']);
     this.bikeBaseService.setPlace(dataJson['place']);
     this.bikeBaseService.setPrice(dataJson['price']);
+    this.bikeBaseService.setImage(dataJson['imgUrl']);
   }
 
   ngOnInit() {
