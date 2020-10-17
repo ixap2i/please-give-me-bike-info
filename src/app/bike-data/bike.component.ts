@@ -100,7 +100,7 @@ export class BikeComponent implements OnInit {
   }
 
   get50ccsBikeNames() {
-    return this.http.get<BikeBaseService[]>('http://localhost:4201/goo_bikes_50').toPromise().then(res => {
+    return this.http.get<BikeBaseService[]>('http://3.128.61.205:4201/goo_bikes_50').toPromise().then(res => {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
@@ -114,7 +114,7 @@ export class BikeComponent implements OnInit {
   }
 
   get250ccsBikeNames() {
-    return this.http.get<BikeBaseService[]>('http://localhost:4201/goo_bikes_250').toPromise().then(res => {
+    return this.http.get<BikeBaseService[]>('http://3.128.61.205:4201/goo_bikes_250').toPromise().then(res => {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
@@ -128,7 +128,7 @@ export class BikeComponent implements OnInit {
   }
 
   get400ccsBikeNames() {
-    return this.http.get<BikeBaseService[]>('http://localhost:4201/goo_bikes_400').toPromise().then(res => {
+    return this.http.get<BikeBaseService[]>('http://3.128.61.205:4201/goo_bikes_400').toPromise().then(res => {
       if(res instanceof HttpErrorResponse) {
         return console.log(res)
       }
