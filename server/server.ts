@@ -78,8 +78,6 @@ var bike_scraping_50 = (async () => {
       +'"price":"'+new_specs[5].toString()+'",'
       +'"imgUrl":"'+spec_img[0].toString()+'"'+
       '}'
-      console.log(spec_img[0]);
-      console.log(data);
       specs_50ccs.push(data);
     }
   } catch(e) {
