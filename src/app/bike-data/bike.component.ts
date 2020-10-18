@@ -136,6 +136,7 @@ export class BikeComponent implements OnInit {
 
       res.some(function(el) {
         bikeServices_400.push(JSON.parse(el.toString()));
+	console.log(el);
       });
       this.dataSource_400 = bikeServices_400;
     });
