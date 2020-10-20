@@ -13,6 +13,8 @@ export class BikeBaseService {
   place: string;
   price: string;
   imgUrl: string;
+  detailLink: string;
+
   setName(name: string) {
     this.name = name;
   }
@@ -34,6 +36,10 @@ export class BikeBaseService {
   setImage(imgUrl: string) {
     this.imgUrl = imgUrl;
   }
+  setLink(detailLink: string) {
+    this.detailLink = detailLink;
+  }
+
 }
 
 export const TABLE_COLUMNS = [
