@@ -13,12 +13,14 @@ import { Location } from '@angular/common';
     <div class="a-title__engine" id="50cc">50cc</div>
     <div class="m-bike">
       <table class="a-table">
-        <tr>
-          <th *ngFor="let col of TABLE_COLUMNS">{{col}}</th>
-        </tr>
-        <ng-container *ngFor="let d of dataSource_50">
-	  <tr>
-            <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
+        <thead>
+          <tr>
+            <th *ngFor="let col of TABLE_COLUMNS">{{col}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let d of dataSource_50">
+            <tr>
               <td><img src="{{d.imgUrl}}" /></td>
               <td>{{d.name}}</td>
               <td>{{d.model_number ? d.model_number : '-'}}</td>
@@ -27,9 +29,14 @@ import { Location } from '@angular/common';
               <td>{{d.distance}}</td>
               <td>{{d.place}}</td>
               <td>{{d.price}}</td>
-	    </a>
-          </tr>
-        </ng-container>
+              <td>
+                <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
+                  <i class="material-icons">north_east</i>
+                </a>
+              </td>
+            </tr>
+          </ng-container>
+        <tbody>
       </table>
     </div>
     <div class="a-title__engine" id="250cc">250cc</div>
@@ -39,39 +46,45 @@ import { Location } from '@angular/common';
           <th *ngFor="let col of TABLE_COLUMNS">{{col}}</th>
         </tr>
         <ng-container *ngFor="let d of dataSource_250">
- 	  <tr>
-	    <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
-              <td><img src="{{d.imgUrl}}" /></td>
-              <td>{{d.name}}</td>
-              <td>{{d.model_number ? d.model_number : '-'}}</td>
-              <td>{{d.status}}</td>
-              <td>{{d.color}}</td>
-              <td>{{d.distance}}</td>
-              <td>{{d.place}}</td>
-              <td>{{d.price}}</td>
-	    </a>
+          <tr>
+            <td><img src="{{d.imgUrl}}" /></td>
+            <td>{{d.name}}</td>
+            <td>{{d.model_number ? d.model_number : '-'}}</td>
+            <td>{{d.status}}</td>
+            <td>{{d.color}}</td>
+            <td>{{d.distance}}</td>
+            <td>{{d.place}}</td>
+            <td>{{d.price}}</td>
+            <td>
+              <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
+                <i class="material-icons">north_east</i>
+              </a>
+            </td>
           </tr>
         </ng-container>
       </table>
     </div>
     <div class="a-title__engine" id="400cc">400cc</div>
     <div class="m-bike">
-      <table class="a-table">      
+      <table class="a-table">
         <tr>
           <th *ngFor="let col of TABLE_COLUMNS">{{col}}</th>
         </tr>
         <ng-container *ngFor="let d of dataSource_400">
-  	  <tr>
-	    <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
-              <td><img src="{{d.imgUrl}}" /></td>
-              <td>{{d.name}}</td>
-              <td>{{d.model_number ? d.model_number : '-'}}</td>
-              <td>{{d.status}}</td>
-              <td>{{d.color}}</td>
-              <td>{{d.distance}}</td>
-              <td>{{d.place}}</td>
-              <td>{{d.price}}</td>
-	    </a>
+          <tr>
+            <td><img src="{{d.imgUrl}}" /></td>
+            <td>{{d.name}}</td>
+            <td>{{d.model_number ? d.model_number : '-'}}</td>
+            <td>{{d.status}}</td>
+            <td>{{d.color}}</td>
+            <td>{{d.distance}}</td>
+            <td>{{d.place}}</td>
+            <td>{{d.price}}</td>
+            <td>
+              <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
+                <i class="material-icons">north_east</i>
+              </a>
+            </td>
           </tr>
         </ng-container>
       </table>
