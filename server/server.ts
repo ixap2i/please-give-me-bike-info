@@ -143,7 +143,7 @@ var bike_scraping_400 = (async () => {
       // http://motorcycle.goobike.com/web/motorcycle/search_syasyu_area.php?type=&exhaust1=&exhaust2=&price_low=0&price_high=9999&model=1030002
       Promise.all([await page.goto('http://motorcycle.goobike.com/web/motorcycle/summary.php?maker=&type=&exhaust1=&exhaust2=&model='+bk400ccs[i][1]+'&baitai_name=&kind=&price_low=&price_high=&new_flg=&year_exhaust_flg=&nenshiki_start=&nenshiki_end='),
       specs = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2)', anchors => { return anchors.map(a => { return a.textContent.trim().split(/\n/); }) })]);
-      specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)|[1-9],[0-9]/g, '').replace(/,{3,6}/g, '').split(/(?<=[a-zA-Z]),|,(?![0-9])/g);
+      specs = specs.toString().replace(/("","",)+/g, '').replace(/(NEW|UP)/g, '').replace(/,{3,6}/g, '').split(/(?<=[a-zA-Z]),|,(?![0-9])/g);
       spec_img = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2) > td.modelName > a > img', anchors => { return anchors.map(img => { return img.getAttribute('src'); }) })
       spec_link = await page.$$eval('#result > table:nth-child(4) > tbody > tr:nth-child(2) > td.modelName > a', anchors => { return anchors.map(a => { return a.getAttribute('href'); }) })
       var new_specs = Array.from(specs);
