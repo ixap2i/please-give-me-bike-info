@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 
 export class BikeBaseService {
   name: string;
-  model_number: string;
-  status: string;
   color: string;
   distance: string;
+  engine: string;
+  status: string;
   place: string;
   price: string;
   imgUrl: string;
@@ -17,6 +17,9 @@ export class BikeBaseService {
 
   setName(name: string) {
     this.name = name;
+  }
+  setEngine(engine: string) {
+    this.engine = engine;
   }
   setStatus(status: string) {
     this.status = status;
@@ -45,10 +48,10 @@ export class BikeBaseService {
 export const TABLE_COLUMNS = [
   '',
   '車種',
-  '年式',
-  '状態',
   '色',
   '走行距離',
+  '排気量',
+  '状態',
   '販売場所',
   '値段'
 ];

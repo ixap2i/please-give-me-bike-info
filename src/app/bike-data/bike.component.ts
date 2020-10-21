@@ -1,16 +1,15 @@
-import { ViewChild, OnInit, Component } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { BikeBaseService } from '../bike-base.service';
 import { TABLE_COLUMNS } from '../bike-base.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'bike-data',
   styleUrls: ['./bike.component.scss'],
   template: `
   <div class="p-bike">
-    <div class="a-title__engine" id="50cc">50cc</div>
+    <div class="a-title__engine" id="50cc">~50cc</div>
     <div class="m-bike">
       <table class="a-table">
         <thead>
@@ -22,13 +21,13 @@ import { Location } from '@angular/common';
           <ng-container *ngFor="let d of dataSource_50">
             <tr>
               <td><img src="{{d.imgUrl}}" /></td>
-              <td>{{d.name}}</td>
-              <td>{{d.model_number ? d.model_number : '-'}}</td>
-              <td>{{d.status}}</td>
-              <td>{{d.color}}</td>
-              <td>{{d.distance}}</td>
-              <td>{{d.place}}</td>
-              <td>{{d.price}}</td>
+              <td>{{d.name ? d.name : '-'}}</td>
+              <td>{{d.color ? d.color : '-'}}</td>
+              <td>{{d.distance ? d.distance : '-'}}</td>
+              <td>{{d.engine ? d.engine : '-'}}</td>
+              <td>{{d.status ? d.status : '-'}}</td>
+              <td>{{d.place ? d.place : '-'}}</td>
+              <td>{{d.price ? d.price : '-'}}</td>
               <td>
                 <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
                   <i class="material-icons">north_east</i>
@@ -39,7 +38,7 @@ import { Location } from '@angular/common';
         <tbody>
       </table>
     </div>
-    <div class="a-title__engine" id="250cc">250cc</div>
+    <div class="a-title__engine" id="250cc">~250cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>
@@ -48,13 +47,13 @@ import { Location } from '@angular/common';
         <ng-container *ngFor="let d of dataSource_250">
           <tr>
             <td><img src="{{d.imgUrl}}" /></td>
-            <td>{{d.name}}</td>
-            <td>{{d.model_number ? d.model_number : '-'}}</td>
-            <td>{{d.status}}</td>
-            <td>{{d.color}}</td>
-            <td>{{d.distance}}</td>
-            <td>{{d.place}}</td>
-            <td>{{d.price}}</td>
+            <td>{{d.name ? d.name : '-'}}</td>
+            <td>{{d.color ? d.color : '-'}}</td>
+            <td>{{d.distance ? d.distance : '-'}}</td>
+            <td>{{d.engine ? d.engine : '-'}}</td>
+            <td>{{d.status ? d.status : '-'}}</td>
+            <td>{{d.place ? d.place : '-'}}</td>
+            <td>{{d.price ? d.price : '-'}}</td>
             <td>
               <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
                 <i class="material-icons">north_east</i>
@@ -64,7 +63,7 @@ import { Location } from '@angular/common';
         </ng-container>
       </table>
     </div>
-    <div class="a-title__engine" id="400cc">400cc</div>
+    <div class="a-title__engine" id="400cc">~400cc</div>
     <div class="m-bike">
       <table class="a-table">
         <tr>
@@ -73,13 +72,13 @@ import { Location } from '@angular/common';
         <ng-container *ngFor="let d of dataSource_400">
           <tr>
             <td><img src="{{d.imgUrl}}" /></td>
-            <td>{{d.name}}</td>
-            <td>{{d.model_number ? d.model_number : '-'}}</td>
-            <td>{{d.status}}</td>
-            <td>{{d.color}}</td>
-            <td>{{d.distance}}</td>
-            <td>{{d.place}}</td>
-            <td>{{d.price}}</td>
+            <td>{{d.name ? d.name : '-'}}</td>
+            <td>{{d.color ? d.color : '-'}}</td>
+            <td>{{d.distance ? d.distance : '-'}}</td>
+            <td>{{d.engine ? d.engine : '-'}}</td>
+            <td>{{d.status ? d.status : '-'}}</td>
+            <td>{{d.place ? d.place : '-'}}</td>
+            <td>{{d.price ? d.price : '-'}}</td>
             <td>
               <a href="http://motorcycle.goobike.com{{d.detailLink}}" target="_blank">
                 <i class="material-icons">north_east</i>
@@ -109,6 +108,7 @@ export class BikeComponent implements OnInit {
     this.bikeBaseService.setName(dataJson['name']);
     this.bikeBaseService.setStatus(dataJson['status']);
     this.bikeBaseService.setColor(dataJson['color']);
+    this.bikeBaseService.setEngine(dataJson['engine']);
     this.bikeBaseService.setDistance(dataJson['distance']);
     this.bikeBaseService.setPlace(dataJson['place']);
     this.bikeBaseService.setPrice(dataJson['price']);
