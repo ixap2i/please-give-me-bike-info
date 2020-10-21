@@ -17,7 +17,6 @@ import { BikeMenuComponent } from './bike-engine-menu/bike.menu.component'
 import { BikeComponent } from './bike-data/bike.component'
 import { OwnerComponent } from './owner/owner.component'
 import { CreditMenuComponent } from './credit-menu/credit-menu.component'
-import { SearchMenuComponent } from './search-menu/search-menu.component'
 import { HttpClientModule } from '@angular/common/http';
 
 // ますとらしい
@@ -40,10 +39,10 @@ import { HammerModule } from '@angular/platform-browser'
     HttpClientModule
   ],
   declarations: [
-    AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent, OwnerComponent, SearchMenuComponent
+    AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent, OwnerComponent
   ],
   providers: [],
-  bootstrap: [AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent, SearchMenuComponent],
+  bootstrap: [AppComponent, BikeMenuComponent, BikeComponent, CreditMenuComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
